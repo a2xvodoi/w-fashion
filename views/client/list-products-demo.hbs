@@ -1,0 +1,149 @@
+{{> nav}}
+<!--breadcrumb-->
+<nav
+  style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+  aria-label="breadcrumb">
+  <ol class="breadcrumb mt-2">
+    <li class="breadcrumb-item ms-3 "><a href="/" class="text-decoration-none"><svg xmlns="http://www.w3.org/2000/svg"
+          width="16" height="16" fill="currentColor" class="bi bi-house-door-fill mb-1" viewBox="0 0 16 16">
+          <path
+            d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
+        </svg> Home</a></li>
+    <li class="breadcrumb-item active category" aria-current="page" data-slug="{{result.slug}}"
+      data-current="{{currentPage}}" data-total="{{totalPage}}">{{result.tenDm}}</li>
+
+  </ol>
+</nav>
+<!--breadcrumb-->
+<!--ProductList-->
+{{#if result}}
+<div class="container-fluid border border-bottom pb-3">
+  <div class="row">
+    <div class="col">
+
+      <div class="row row-cols-md-4 row-cols-3">
+        {{#each result.list}}
+        <div class="col mt-4">
+          <div class="card" style="width: 97%;">
+            <a href="/{{this.slugDm}}/{{this.slug}}"><img src="{{this.anh}}" class="card-img-top" height="250rem"
+                alt="..."></a>
+            <div class="card-body">
+              <a href="/{{this.slugDm}}/{{this.slug}}" style="text-decoration: none;">
+                <h5 class="card-title text-center text-grey">{{this.ten}}</h5>
+                <p class="card-text text-center text-dark fw-bold">{{this.gia}} đ</p>
+              </a>
+              <div class="product_hover text-center">
+                <a href="/gio-hang">
+                  <div class="btn btn-dark cart-in">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-cart4" viewBox="0 0 16 16">
+                      <path
+                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                    </svg> Thêm vào giỏ
+                  </div>
+                </a>
+                <a href="/thanh-toan">
+                  <div class="btn btn-dark mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                    </svg> Mua nhanh
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+{{else}}
+<div class="alert alert-danger text-center">Danh mục sản phẩm không tồn tại!!!</div>
+{{/if}}
+<!--ProductList-->
+<!--Pagination-->
+{{!-- <nav aria-label="Page navigation example" class="mt-2 mb-2">
+  <ul class="pagination justify-content-center">
+    {{#if (equal currentPage 1)}}
+    <li class="page-item">
+      <a class="page-link" href="/{{result.slug}}?page={{minus currentPage 1}}" tabindex="-1"
+        aria-disabled="true">Previous</a>
+    </li>
+    {{else}}
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    {{/if}}
+    {{#each (for currentPage totalPage)}}
+    {{#if result.slug}}
+    <li class="page-item"><a class="page-link" href="/{{result.slug}}?page={{this}}">{{this}}</a></li>
+
+    {{/if}}
+    {{/each}}
+    {{#if (than totalPage currentPage)}}
+    <li class="page-item">
+      <a class="page-link" href="/{{result.slug}}?page={{minus currentPage -1}}">Next</a>
+    </li>
+
+    {{else}}
+    <li class="page-item disabled">
+      <a class="page-link" href="#">Next</a>
+    </li>
+    {{/if}}
+  </ul>
+</nav> --}}
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+  </ul>
+</nav>
+<!--Pagination-->
+<script>
+  $(function () {
+    const current = $('.category').data('current');
+    const total = $('.category').data('total');
+    const slug = $('.category').data('slug');
+    $('.pagination').append(`<li class="page-item pre">
+      <a class="page-link " href="\\${slug}?page=1" tabindex="-1" aria-disabled="true"><span aria-hidden="true">&laquo;</span></a>
+    </li>`);
+    if (current <= 1) {
+      $('.pre').addClass('disabled');
+    } else {
+      $('.pre').removeClass('disabled');
+    }
+    let more = false;
+    for (let index = current; index <= total; index++) {
+      let href = `\\${slug}?page=${index}`;
+      if (index > (current + 2) && index <= (total - 3)) {
+        if (more) {
+          continue;
+        } else {
+          $('.pagination').append(`
+            <li class="page-item disabled" ><a class="page-link" href="">...</a></li>`)
+          more = true;
+        }
+
+      } else {
+        $('.pagination').append(`
+      <li class="page-item" id="page-${index}"><a class="page-link" href="${href}">${index}</a></li>
+      `);
+
+      }
+      if (index === current) {
+        $(`#page-${index}`).addClass('active');
+      } else {
+        $(`#page-${index}`).removeClass('active');
+      }
+    }
+    $('.pagination').append(`<li class="page-item next">
+      <a class="page-link" href="\\${slug}?page=${total}"><span aria-hidden="true">&raquo;</span></a>
+    </li>`)
+    if (current >= total) {
+      $('.next').addClass('disabled');
+    } else {
+      $('.next').removeClass('disabled');
+    }
+  })
+</script>

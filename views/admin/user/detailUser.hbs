@@ -1,0 +1,43 @@
+{{>sideNavAd}}
+<div class="main-content" id="panel">
+    {{> navAd}}
+    <div class="h1 text-center mt-3 me-3">Thông tin tài khoản</div>
+    {{#if user}}
+    <div class="row row-cols-md-2">
+        <div class="form-group col">
+            <label for="inputName" class="form-control-label">Tên đăng nhập</label>
+            <input class="form-control" type="text" name="tenDangNhap" value="{{user.tenDangNhap}}" readonly>
+        </div>
+
+        <div class="form-group col">
+            <label for="categry-input" class="form-control-label">Mật khẩu</label>
+            <input class="form-control" type="password" value="{{user.matKhau}}" name="matKhau" readonly>
+        </div>
+    </div>
+
+    <div class="row row-cols-md-2">
+        <div class="form-group col">
+            <label for="inputImage" class="form-control-label">Tên thành viên</label>
+            <input class="form-control" type="text" value="{{user.tenTK}}" name="tenTK" readonly>
+        </div>
+        <div class="form-group col">
+            <label for="inputCost" class="form-control-label">Số điện thoại</label>
+            <input class="form-control" type="text" value="{{user.soDienThoai}}" name="soDienThoai" readonly>
+        </div>
+        <div class="form-group col">
+            <label for="number-input" class="form-control-label">Email</label>
+            <input class="form-control" type="text" value="{{user.email}}" name="email" readonly>
+        </div>
+        <div class="form-group col">
+            <label for="color-input" class="form-control-label">Địa chỉ</label>
+            <input class="form-control" type="text" value="{{user.diaChi}}" name="diaChi" readonly>
+        </div>
+    </div>
+    <div class="form-group text-center">
+        <a href="/admin/user/{{user._id}}/edit" class="btn btn-outline-primary">Chỉnh sửa</a>
+        <a href="/admin/user/{{user._id}}/delete" class="btn btn-outline-danger">Xóa</a>
+    </div>
+    {{else}}
+    <div class="alert alert-danger">Tài khoản không tồn tại!!!</div>
+    {{/if}}
+</div>

@@ -1,0 +1,32 @@
+{{> nav}}
+<div class="text-center h2 mt-5 mb-5">Thông tin thành viên</div>
+{{#if user}}
+    <div class="container">
+        <div class="row row-cols-md-2 row-cols-1 fs-5 mb-3">
+        <div class="col mb-4">
+            Tên đăng nhập: {{user.tenDangNhap}}
+        </div>
+        <div class="col mb-4" type='password'>
+            Mật khẩu: <button class="btn btn-secondary">Đổi mật khẩu</button>
+        </div>
+        <div class="col mb-4">
+            Tên thành viên: {{user.tenTK}}
+        </div>
+        <div class="col mb-4">
+            Số điện thoại: {{user.soDienThoai}}
+        </div>
+        <div class="col mb-4">
+            Email: {{user.email}}
+        </div>
+        <div class="col mb-4">
+            Địa chỉ: {{user.diaChi}}
+        </div>
+        </div>
+        <div class="text-center h4 mb-5">
+                <button class="btn btn-primary">Sửa thông tin</button>
+        </div>
+    </div>
+
+{{else}}
+    <div class="alert alert-danger"> Tài khoản chưa tồn tại!!!</div>
+{{/if}}

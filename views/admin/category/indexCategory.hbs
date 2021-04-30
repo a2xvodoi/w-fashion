@@ -1,0 +1,195 @@
+{{>sideNavAd}}
+<div class="main-content" id="panel">
+    {{> navAd}}
+    <!-- Header -->
+    <!-- Header -->
+    <form method="POST" name="form-edit-category">
+
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
+                  <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"/>
+                </svg>
+                Danh mục
+              </h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="/admin"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Danh mục</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+              <a href="" class="btn btn-sm btn-neutral btn-edit-category" data-toggle="modal" data-target="#createModal">Thêm mới</a>
+              <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <!-- Dark table -->
+      <div class="row">
+        <div class="col">
+          <div class="card bg-default shadow">
+            <div class="table-responsive">
+              <table class="table align-items-center table-dark table-flush">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Tên</th>
+                    
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody class="list">
+                  {{#each categories}}
+                  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        <div class="media-body">
+                          <span class="name mb-0 text-sm">{{this.tenDm}}</span>
+                        </div>
+                      </div>
+                    </th>
+                 
+                    <td class="text-right">
+                        <button type="button" class="btn btn-default btn-edit-category" data-toggle="modal" data-target="#editModal" data-name="{{this.tenDm}}" data-slug="{{this.slug}}">Sửa danh mục</button>
+                        <button type="button" class="btn btn-default btn-delete-category" data-toggle="modal" data-target="#deleteModal" data-slug="{{this.slug}}">Xóa danh mục</button>                       
+                    </td>
+                  </tr>
+                  
+                  {{else}}
+                  <div class="alert alert-danger">Chưa có danh mục nào!!!</div>
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- Button trigger modal -->
+        <!-- Modal edit -->
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel">Chỉnh sửa danh mục</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group mb-3">
+                                    <label for="tenDm" class="text-black-50 h3 float-left">Tên danh mục</label>
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <input class="form-control" type="text" id="tenDm" name="tenDm">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                <button type="button" class="btn btn-primary" id="editCategory">Lưu thay đổi</button>
+                            </div>
+                            </div>
+                        </div>
+        </div>
+      </form>
+      <!---Modal delete-->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Xóa danh mục</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div>Bạn có chắc chắn xóa danh mục này? Danh mục này sẽ mất nếu bạn ấn <span class="text-danger">" Đồng ý"</span> !!!</div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                <button type="button" class="btn btn-danger" id="deleteCategory">Đồng ý</button>
+                            </div>
+                            </div>
+                        </div>
+        </div>
+
+        <!--Modal create-->
+        <form name="form-create-category" method="post">
+            <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="createModalLabel">Thêm danh mục</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group mb-3">
+                                    <label for="tenDm" class="text-black-50 h3 float-left">Tên danh mục</label>
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <input class="form-control" type="text" id="tenDm" name="tenDm">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                <button type="button" class="btn btn-primary" id="createCategory">Thêm</button>
+                            </div>
+                            </div>
+                        </div>
+        </div>
+        </form>
+      
+    </div>
+  </div>
+  </form>
+  <form name="form-delete-category" method="post"></form>
+  <!-- Footer -->
+      {{> footerAd}}
+  <script>
+    
+    document.addEventListener('DOMContentLoaded',function(){
+        var categoryName,slug ;
+        var formCreateCategory = document.forms['form-create-category'];
+        var formEditCategory = document.forms['form-edit-category'];
+        var formDeleteCategory = document.forms['form-delete-category'];
+
+        var createBtnCategory = $('#createCategory');
+        var editBtnCategory = $('#editCategory');
+        var deleteBtnCategory = $('#deleteCategory');
+        $('#editModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            categoryName = button.data('name'); // Extract info from data-* attributes
+            slug = button.data('slug');
+            $('#tenDm').val(categoryName);
+        });
+
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            // Extract info from data-* attributes
+            slugDelete = button.data('slug');
+        });
+
+        createBtnCategory.click(function(){
+            formCreateCategory.action = '/admin/category/create?_method=POST';
+            formCreateCategory.submit();
+        });
+        editBtnCategory.click(function(){
+            formEditCategory.action = '/admin/category/edit/' + slug+ '?_method=PUT';
+            formEditCategory.submit();
+        });
+        deleteBtnCategory.click(function(){
+            formDeleteCategory.action = '/admin/category/delete/' + slugDelete+ '?_method=DELETE';
+            formDeleteCategory.submit();
+        });
+    })
+  </script>

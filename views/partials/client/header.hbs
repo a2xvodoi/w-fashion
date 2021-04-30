@@ -1,0 +1,23 @@
+
+<div class="container-fluid" style="margin-top: 0.5%;">
+    <!--intro-->
+    <div class="row" >
+        <div class="col col-md-10 justify-content-start h1 fs-6" style="color: red;">
+            Hostline: 0915264977 - Mở cửa từ 6:00 - 21:00 các ngày trong tuần
+        </div>
+        <div class="col col-md-2 justify-content-end text-grey me-0">
+            Liên hệ 
+            <span>|</span>
+             Hỗ trợ 
+             <span>|</span>
+             {{#if session.account}}
+                <a href="/account/{{session.account.tenDangNhap}}" style="text-decoration: none;" class="text-grey">{{session.account.tenDangNhap}}</a>
+                <a href="/account/logout" style="text-decoration: none;" class="text-grey ms-5">Đăng xuất</a> 
+             {{else}}
+                <a href="/account/login" style="text-decoration: none;" class="text-grey">Tài khoản</a> 
+             {{/if}}
+        </div>
+    </div>
+    <!--intro-->
+<hr width="100%" style="margin-top: 0.5%;margin-bottom: 0.5%;">
+</div>

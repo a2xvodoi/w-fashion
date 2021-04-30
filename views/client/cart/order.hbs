@@ -1,0 +1,48 @@
+{{> nav}}
+<div class="container p-3 order">
+    <div class="text-center h2 alert alert-dark">Đặt hàng</div>
+    <div class="row row-cols-md-2 row-cols-1 border border-1 pt-2 pb-3 mb-5">
+        <div class="col">
+            <div class="h3 text-uppercase">
+                Thông tin khách hàng
+            </div>
+            <form action="/dat-hang" method="POST" name="form-order">
+                <div class="mb-3">
+                    <label for="accountname" class="form-label">Người nhận</label>
+                    <input type="text" class="form-control" id="accountname" value="{{session.account.tenTK}}" name="nguoiNhan">
+
+                </div>
+                <div class="mb-3">
+                    <label for="diaChi" class="form-label">Địa chỉ nhận</label>
+                    <input type="text" class="form-control" id="diaChi"
+                        value="{{session.account.diaChi}}" name="diaChiNhan">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-order w-25">Đặt hàng</button>
+                </div>
+                    
+            </form>
+        </div>
+        <div class="col">
+            <div class="h3 text-uppercase text-center mb-5">Đơn hàng</div>
+            <div class="container">
+                <div class="row">
+                    {{#if session.cart.products}}
+                    {{#each session.cart.products}}
+                    <div class="col-3 mb-5">
+                        <img src="{{this.anh}}" width="50px" height="70px" alt="">
+                    </div>
+                    <div class="col-9 h6">{{this.ten}} -
+                        {{this.mauSac}}/{{this.kichThuoc}}<br />SL:{{this.soLuong}}<br /> Giá: {{this.gia}} đ</div>
+                    {{/each}}
+                    {{else}}
+                    <div class="alert alert-secondary ">Bạn chưa có sản phẩm nào trong giỏ hàng!!!
+                        <br>Bạn có thể xem sản phẩm của chúng tôi <a href="/">tại đây</a>
+                    </div>
+                    {{/if}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

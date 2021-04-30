@@ -1,0 +1,27 @@
+{
+  "name": "w-fashion",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-handlebars": "^5.2.1",
+    "express-session": "^1.17.1",
+    "http-errors": "~1.6.3",
+    "md5": "^2.3.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.11.15",
+    "mongoose-sequence": "^5.3.1",
+    "mongoose-slug-generator": "^1.0.4",
+    "morgan": "~1.9.1",
+    "short-id": "0.1.0-1",
+    "speakingurl": "^14.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

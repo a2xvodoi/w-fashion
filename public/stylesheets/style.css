@@ -1,0 +1,80 @@
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+.carousel-item img {
+ height: 300px;
+}
+.text-grey{
+    color: grey;
+}
+
+.card img{
+    padding: 1.5%;
+}
+.product_hover{
+    position: absolute;
+    top: 10rem;
+    right: 0.2rem;
+    display: none;
+}
+.account{
+    transition: all 0.5s;
+    border-radius: 10%;
+}
+.account:hover{
+    border-bottom: 1px solid rgb(128, 128, 128);
+    cursor: pointer;
+}
+.paginationjs{
+    display: flex;
+}
+.paginationjs-pages ul{
+    list-style-type: none;
+    display: flex;
+}
+.paginationjs-go-input .J-paginationjs-go-pagenumber,.paginationjs-go-button .J-paginationjs-go-button{
+    height: 30px;
+    line-height: 30px;
+    width: 40px;
+    text-align: center;
+}
+#pagination li
+{
+    text-decoration: none;
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+#pagination li a{
+    text-decoration: none;
+}
+
+#pagination li:hover a{
+    text-decoration: underline;
+}
+
+.account:hover .register, .login{
+    display: block;
+}
+.hines{
+    display: none;
+}
+.order col{
+    margin-bottom: 30px;
+}
+@media (max-width: 576px) { 
+    .hine{
+        display: none;
+    }
+    .card img{
+        height: 120px;
+    }
+    
+ } 
+@media (min-width: 576px) { 
+    .card:hover .product_hover{
+        display: block;
+    }
+ } 
+ 

@@ -1,0 +1,103 @@
+{{>sideNavAd}}
+<div class="main-content" id="panel">
+    {{> navAd}}
+    <!-- Header -->
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
+                  <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"/>
+                </svg>
+                Sản phẩm</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="/admin"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+              <a href="/admin/product/create-product" class="btn btn-sm btn-neutral">Thêm mới</a>
+              <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <!-- Dark table -->
+      <div class="row">
+        <div class="col">
+          <div class="card bg-default shadow">
+            
+            <div class="table-responsive">
+              <table class="table align-items-center table-dark table-flush">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Tên</th>
+                    <th>Ảnh</th>
+                    <th>Lượng có</th>
+                    <th>Màu sắc</th>
+                    <th>Kích thước</th>
+                    <th>Giá</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody class="list">
+                  {{#each products}}
+                  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        <div class="media-body">
+                          <span class="name mb-0 text-sm">{{this.ten}}</span>
+                        </div>
+                      </div>
+                    </th>
+                    <td>
+                      <img src="{{this.anh}}" alt="" width="50px" height="80px">
+                    </td>
+                    <td>
+                      {{this.luongCo}}
+                    </td>
+                    <td>
+                      {{this.mauSac}}
+                    </td>
+                    <td>
+                      {{this.kichThuoc}}
+                    </td>
+                    <td>
+                      {{this.gia}}
+                    </td>
+                    <td class="text-right">
+                      <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                          <a class="dropdown-item" href="/admin/product/{{this.slug}}">Chi tiết sản phẩm</a>
+                          <a class="dropdown-item" href="/admin/product/edit/{{this.slug}}">Sửa sản phẩm</a>
+                          <a class="dropdown-item" href="/admin/product/delete/{{this.slug}}">Xóa sản phẩm</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  
+                  {{else}}
+                  <div class="alert alert-danger">Chưa có sản phẩm nào!!!</div>
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      {{> footerAd}}
+    </div>
+  </div>

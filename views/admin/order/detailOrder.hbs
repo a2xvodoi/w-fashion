@@ -1,0 +1,98 @@
+{{>sideNavAd}}
+<div class="main-content" id="panel">
+    {{> navAd}}
+    <div class="h1 text-center mt-3">Chi tiết đơn hàng</div>
+    <div class="container-fuild">
+        <div class="row row-cols-md-2">
+            <div class="form-group col">
+                <label for="inputName" class="form-control-label">Mã đơn hàng</label>
+                <input class="form-control" type="text" name="maDH" value="{{order.maDH}}" readonly>
+            </div>
+
+            <div class="form-group col">
+                <label for="categry-input" class="form-control-label">Người nhận</label>
+                <input class="form-control" type="text"  value="{{order.nguoiNhan}}" name="nguoiNhan"
+                    readonly>
+            </div>
+            <div class="form-group col">
+                <label for="inputImage" class="form-control-label">Địa chỉ nhân</label>
+                <input class="form-control" type="text"  value="{{order.diaChiNhan}}" name="diaChiNhan"
+                    readonly>
+            </div>
+
+            <div class="form-group col">
+                <label for="categry-input" class="form-control-label">Trạng thái</label>
+                <input class="form-control" type="text" value="{{order.status}}" name="status"
+                    readonly>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-3">
+        <div class="table-responsive">
+            <div>
+                <table class="table align-items-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Tên sản phẩm</th>
+                            <th>Ảnh</th>
+                            <th>Kích thước</th>
+                            <th>Màu sắc</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="list">
+                        {{#each order.products}}
+                        <tr>
+                            <th>
+                                <div>{{this.ten}}</div>
+                            </th>
+                            <td>
+                                <img src="{{this.anh}}" class="img-fluid" width="50px" height="80px" alt="">
+                            </td>
+                            <td>
+                                <div>{{this.kichThuoc}}</div>
+                            </td>
+                            <td>
+                                <div>{{this.mauSac}}</div>
+                            </td>
+                            <td>
+                                <div>{{this.gia}}</div>
+                            </td>
+                            <td>
+                                <div>{{this.soLuong}}</div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group text-center mt-5">
+        <button class="btn btn-outline-danger confirm-delete" data-madh="{{order.maDH}}">Hủy đơn hàng</button>
+    </div>
+</div>
+<script>
+    $('.confirm-delete').click(function(){
+        let maDH = $(this).data('madh');
+        $.ajax({
+        data: {
+            maDH: maDH,
+         },
+        url: '/admin/order/delete/' + maDH,
+        dataType: 'json',
+        type: 'DELETE',
+        success: function (res) {
+            if (res.status === true) {
+                window.location.href = "/admin/order";
+            }else{
+              alert('Lỗi!!!');
+            }
+        }
+    })
+    })
+</script>

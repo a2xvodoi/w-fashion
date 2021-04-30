@@ -1,0 +1,44 @@
+{{> nav}}
+<div class="container p-3">
+    <div class="text-center h2 alert alert-dark">Giở hàng của bạn({{session.cart.length}}) </div>
+    {{#if session.cart.products}}
+    <div class="row row-cols-md-2 row-cols-1">
+        {{#each session.cart.products}}
+        <div class="row row-cols-2">
+            <div class="col">
+                <img src="{{this.anh}}" class="img-thumbnail w-25" alt="">
+            </div>
+            <div class="col">
+                <div class="container-fluid">
+                    <a href="/{{this.slugDm}}/{{this.slug}}" class="link-dark">
+                        <div class="fw-bold">{{this.ten}} - {{this.mauSac}}/{{this.kichThuoc}}</div>
+                    </a>
+                    <div class="row row-cols-3 mt-1">
+                        <a href="#" style="text-decoration: none;" class="mt-1 deleteOne" data-id="{{this._id}}">Xóa</a>
+                        <div>
+                            <input type="number" value="{{this.soLuong}}" min="1" class="so-luong"
+                                data-name="{{this.ten}}" data-color="{{this.mauSac}}" data-size="{{this.kichThuoc}}"
+                                style="width: 35px;">
+                        </div>
+                        <div>{{this.gia}}đ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="text-center h5 alert alert-dark mt-3 row">
+        <div class="col">Tổng: {{session.cart.totals}} đ </div>
+        <div class="col row row-cols-2">
+            <button id="btnContinue" class="btn btn-dank col  mb-1" >Tiếp tục mua hàng</button>
+            <button id="btnUpdate" class="btn btn-dank col mb-1" >Cập nhật giỏ hàng</button><br />
+            <button id="btnDeleteAll" class="btn btn-dank col mb-1" >Xoá giỏ hàng</button>
+            <button id="btnOrder" class="btn btn-dank col mb-1" >Tiến hành đặt hàng</button><br />
+        </div>
+    </div>
+    
+    {{else}}
+    <div class="text-center">Không có sản phẩm nào trong giỏ hàng của bạn!!!</div>
+    {{/if}}
+
+</div>

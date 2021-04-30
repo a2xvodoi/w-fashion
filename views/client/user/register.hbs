@@ -1,0 +1,43 @@
+{{> nav}}
+<div class="text-center h2">Đăng ký</div>
+<form class="row g-3 m-4" method="POST" action="/account/register">
+    <div class="col-md-6">
+      <label for="accountName" class="form-label">Tên đăng nhập</label>
+      <input type="text" class="form-control" id="accountName" name="tenDangNhap" value="{{value.tenDangNhap}}">
+      {{#if err}}
+        <div class="text-danger">{{err.tenDangNhap}}</div>
+      {{/if}}
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Mật khẩu</label>
+      <input type="password" class="form-control" id="inputPassword4" name="matKhau">
+      {{#if err}}
+        <div class="text-danger">{{err.matKhau}}</div>
+      {{/if}}
+    </div>
+    <div class="col-6">
+      <label for="inputName" class="form-label">Tên người dùng</label>
+      <input type="text" class="form-control" id="inputName" name="tenTK" value="{{value.tenTK}}">
+      {{#if err}}
+        <div class="text-danger">{{err.tenTK}}</div>
+      {{/if}}
+    </div>
+    <div class="col-6">
+      <label for="inputPhone" class="form-label">Số điện thoại</label>
+      <input type="text" class="form-control" id="inputPhone" name="soDienThoai" value="{{value.soDienThoai}}">
+      {{#if err}}
+        <div class="text-danger">{{err.soDienThoai}}</div>
+      {{/if}}
+    </div>
+    <div class="col-12">
+      <label for="inputAddress2" class="form-label">Địa chỉ</label>
+      <input type="text" class="form-control" id="inputAddress2" name="diaChi" value="{{value.diaChi}}">
+      {{#if err}}
+        <div class="text-danger">{{err.diaChi}}</div>
+      {{/if}}
+    </div>
+    <div class="col-12 text-center mb-5">
+      <button type="submit" class="btn btn-primary mb-4">Đăng ký</button><br>
+      <a href="/account/login">Bạn đã có tài khoản? Đăng nhập!</a>
+    </div>
+  </form>

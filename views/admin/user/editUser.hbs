@@ -1,0 +1,50 @@
+{{>sideNavAd}}
+<div class="main-content" id="panel">
+    {{> navAd}}
+    <div class="h1 text-center mt-3 me-3">Thông tin tài khoản</div>
+    {{#if user}}
+    <form action="/admin/user/{{user._id}}/edit?_method=PUT" method="POST">
+    <div class="row row-cols-md-2">
+        <div class="form-group col">
+            <label for="inputName" class="form-control-label">Tên đăng nhập</label>
+            <input class="form-control" type="text" name="tenDangNhap" value="{{user.tenDangNhap}}">
+        </div>
+
+        <div class="form-group col">
+            <label for="categry-input" class="form-control-label">Mật khẩu</label>
+            <input class="form-control" type="password" value="{{user.matKhau}}" name="matKhau">
+        </div>
+    </div>
+
+    <div class="row row-cols-md-2">
+        <div class="form-group col">
+            <label for="inputImage" class="form-control-label">Tên thành viên</label>
+            <input class="form-control" type="text" value="{{user.tenTK}}" name="tenTK">
+        </div>
+        <div class="form-group col">
+            <label for="inputCost" class="form-control-label">Số điện thoại</label>
+            <input class="form-control" type="text" value="{{user.soDienThoai}}" name="soDienThoai">
+        </div>
+        <div class="form-group col">
+            <label for="number-input" class="form-control-label">Email</label>
+            <input class="form-control" type="text" value="{{user.email}}" name="email">
+        </div>
+        <div class="form-group col">
+            <label for="color-input" class="form-control-label">Địa chỉ</label>
+            <input class="form-control" type="text" value="{{user.diaChi}}" name="diaChi">
+        </div>
+    </div>
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-outline-primary">Lưu thay đổi</button>
+        <button type="button" onclick="goBack()" class="btn btn-outline-danger">Hủy bỏ</button>
+    </div>
+    </form>
+    {{else}}
+    <div class="alert alert-danger">Tài khoản không tồn tại!!!</div>
+    {{/if}}
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
